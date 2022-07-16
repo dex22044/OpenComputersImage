@@ -8,7 +8,7 @@ gpu2 = comp.gpu --comp.proxy(comp.get("ca834199"))
 
 local _,addr1=ev.pull("touch")
 gpu2.bind(addr1)
-gpu2.setBackground(0xFFFF00)
+gpu2.setBackground(0x000000)
 gpu2.fill(1,1,160,50,' ')
 
 function col8ToRGB(col8)
@@ -44,14 +44,12 @@ function drawBitmap(bmpName)
   self=fs.open(bmpName)
   w=string.byte(self:read(1))
   h=string.byte(self:read(1))/2
-print("ОНО ДОШЛО!!!")
---print(bmp1)
+  print("ОНО ДОШЛО!!!")
 
   gpu2.bind(addr1)
-gpu2.setResolution(w,h)
+  gpu2.setResolution(w,h)
   bitmapToScreen(self,gpu2,w,h)
 end
 
-os.sleep(5)
-drawBitmap("/mnt/d68/botw.ocif")
+drawBitmap("/home/image.ocif")
 ev.pull("touch")
